@@ -521,7 +521,7 @@ Invoke-Task "Collecting event logs" {
 }
 
 Invoke-Task "Zipping up" {
-    Compress-archive -Path $base -CompressionLevel "Fastest" -Destination "C:\\ForensicCollection\\_$hostname`_$timestamp.zip"
+    Compress-archive -Path $base -CompressionLevel "Fastest" -Destination "C:\\ForensicCollection\\collection.zip"
 }
 
 Invoke-Task "Hashing" {
