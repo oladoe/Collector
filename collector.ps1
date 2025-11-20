@@ -1,11 +1,14 @@
-chcp 65001 | Out-Null
-[Console]::OutputEncoding = [System.Text.Encoding]::UTF8
-$ErrorActionPreference = "Stop"
-
 param (
     [string]$Collector = "No name given",
     [switch]$silent
 )
+
+
+
+chcp 65001 | Out-Null
+[Console]::OutputEncoding = [System.Text.Encoding]::UTF8
+$ErrorActionPreference = "Stop"
+
 
 
 
