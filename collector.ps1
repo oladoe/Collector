@@ -257,7 +257,7 @@ Invoke-Task "Collecting users and groups" {
         }
     }
 
-    $psloggedonPath = Join-Path $PSScriptRoot "sysinternals\psloggedon.exe"
+    $psloggedonPath = Join-Path $PSScriptRoot "sysinternals\psloggedon"
     & $psloggedonPath -accepteula > "$($folders['UsersAndGroups'])\PsLoggedOn.txt"
 }
 
@@ -341,7 +341,7 @@ Invoke-Task "Collecting services" {
 }
 
 Invoke-Task "Collecting Autoruns data" {
-    $autorunsPath = Join-Path $PSScriptRoot "sysinternals\autorunsc64.exe"
+    $autorunsPath = Join-Path $PSScriptRoot "sysinternals\autorunsc64"
     & $autorunsPath -a * -h -nobanner -accepteula -c > "$($folders['Autoruns'])\Autoruns.csv"
 }
 
@@ -486,10 +486,10 @@ Invoke-Task "Collecting Temp Folders" {
 
     $profiles = Get-CimInstance Win32_UserProfile | Where-Object { -not $_.Special -and $_.LocalPath -like 'C:\Users\*' }
 
-    foreach ($profile in $profiles) {
+    foreach ($p in $profiles) {
  
-        $userName = Split-Path $profile.LocalPath -Leaf
-        $tempPath = Join-Path $profile.LocalPath "AppData\Local\Temp"
+        $userName = Split-Path $p.LocalPath -Leaf
+        $tempPath = Join-Path $p.LocalPath "AppData\Local\Temp"
 
         if (Test-Path $tempPath) {
             try {
