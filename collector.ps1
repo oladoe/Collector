@@ -3,7 +3,7 @@ chcp 65001 | Out-Null
 $ErrorActionPreference = "Stop"
 
 param (
-    [string]$Collector = "No name given"
+    [string]$Collector = "No name given",
     [switch]$silent
 )
 
